@@ -15,3 +15,9 @@ para processamento e camada 3: módulo que acessa os arquivos.
 O exato mesmo projeto do lab anterior, porém transformando o servidor em
 concorrente, isto é, vários clientes podem se conectar ao mesmo tempo ao
 servidor.
+
+## lab4
+
+Implementação de um programa de chat, que utiliza um servidor central para
+receber e distribuir as mensagens. Vários clientes podem se conectar ao mesmo
+tempo, e enviar mensagens para outros clientes especificamente.

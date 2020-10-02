@@ -1,1 +1,1 @@
-[![screnshot](lab4/p2/screenshot.png)](lab4/p2/screenshot.png)
+[![screenshot](screenshot.png)](screenshot.png)
