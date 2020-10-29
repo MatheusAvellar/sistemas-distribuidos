@@ -21,3 +21,8 @@ servidor.
 Implementação de um programa de chat, que utiliza um servidor central para
 receber e distribuir as mensagens. Vários clientes podem se conectar ao mesmo
 tempo, e enviar mensagens para outros clientes especificamente.
+
+## lab5
+
+Implementação simplificada do protocolo Chord, que especifica uma tabela hash
+distribuída entre um anel de vários nós.
