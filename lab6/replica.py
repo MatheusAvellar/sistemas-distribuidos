@@ -99,6 +99,8 @@ def printHelp():
   print(f"\t{colors.fg.lightgreen}history\n{colors.reset}\t\tImprime o histórico de valores de X")
   print(f"\t{colors.fg.lightgreen}set [n]\n{colors.reset}\t\tAltera o valor de X")
   print(f"\t\tEx.: '{colors.fg.lightgreen}set 10{colors.reset}' altera o valor para 10")
+  print(f"\t{colors.fg.lightgreen}commit\n{colors.reset}\t\tAtualiza o valor de X nas outras réplicas")
+  print(f"\t\tsem perder o 'chapéu'")
   print(f"\t{colors.fg.lightgreen}ping\n{colors.reset}\t\tRequisita uma resposta de todas as réplicas ativas")
   print(f"\t{colors.fg.lightgreen}exit\n{colors.reset}\t\tFinaliza o programa")
   print(colors.reset)
@@ -116,6 +118,19 @@ def processCommand(cmd):
     systemPrint(f"X = {config.X}")
   elif cmd == "history":
     systemPrint(config.X_modif_hist)
+  elif cmd == "commit":
+    if not config.am_i_primary:
+      systemPrint("Não é cópia primária, não há o que atualizar!")
+    else:
+      # Se o valor foi modificado desde que o nó recebeu o chapéu
+      if config.X != config.received_X:
+        # Atualiza todos os nós sobre o valor atual de X
+        sendAll(f"update-x {config.X}")
+        # Salva o novo valor de X
+        config.received_X = config.X
+        systemPrint("Réplicas atualizadas!")
+      else:
+        systemPrint("Não houve mudanças de X!")
   elif cmd == "ping":
     sendAll("ping")
   elif cmd == "exit":
