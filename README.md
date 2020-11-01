@@ -26,3 +26,10 @@ tempo, e enviar mensagens para outros clientes especificamente.
 
 Implementação simplificada do protocolo Chord, que especifica uma tabela hash
 distribuída entre um anel de vários nós.
+
+## lab6
+
+Protocolo de replicação baseado em cópia primária com escrita local – isto é,
+sistema onde há cópia de dados distribuída entre vários processos separados.
+Há uma cópia definida como "primária" que controla escritas ao dado; quando
+outra cópia deseja modificar o dado, ela antes requisita o status de "primária".
